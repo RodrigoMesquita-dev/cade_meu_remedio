@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tela_inicial"
-    android:background="@mipmap/veia">
+    android:background="@mipmap/veia"
+    tools:context=".tela_inicial">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,19 +26,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="184dp"
+            android:layout_margin="40px"
             android:background="#fff"
             android:orientation="vertical"
-            android:padding="40px"
-            android:layout_margin="40px"
-            >
+            android:padding="40px">
 
             <EditText
                 android:id="@+id/txtLoginMail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:hint="Email"
+                android:inputType="textPersonName"
                 android:text="" />
 
             <EditText
