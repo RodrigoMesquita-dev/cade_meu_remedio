@@ -24,6 +24,7 @@ public class tela_inicial extends AppCompatActivity {
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
 
                 PessoaDAO pd = new PessoaDAO(getBaseContext());
                 Pessoa p = new Pessoa();
@@ -36,6 +37,9 @@ public class tela_inicial extends AppCompatActivity {
                 } else{
                     Toast.makeText(getBaseContext(),"Login Invalido!",Toast.LENGTH_LONG).show();
                 }
+                 */
+                Intent myIntent = new Intent(getBaseContext(), Menu.class);
+                startActivity(myIntent);
 
             }
         });

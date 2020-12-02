@@ -44,6 +44,10 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".Usuario" />
         <activity android:name=".Registro_Usuario" />
+        <activity android:name=".Farmacia" />
+        <activity android:name=".Mapa" />
+        <activity android:name=".Menu" />
+        <activity android:name=".Remedio" />
         <activity android:name=".tela_inicial" />
         <activity android:name=".MainActivity">
             <intent-filter>

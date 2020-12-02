@@ -25,6 +25,8 @@ public class Registro_Usuario extends AppCompatActivity {
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
+
                 EditText txtEmail = (EditText) findViewById(R.id.txtEmail);
                 EditText txtNome = (EditText) findViewById(R.id.txtNome);
                 EditText txtTelefone = (EditText) findViewById(R.id.txtTelefone);
@@ -45,7 +47,10 @@ public class Registro_Usuario extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Você foi cadastrado com sucesso!", Toast.LENGTH_LONG).show();
                 Intent myIntent = new Intent(getBaseContext(), tela_inicial.class);
                 startActivity(myIntent);
+                 */
 
+                Intent myIntent = new Intent(getBaseContext(), tela_inicial.class);
+                startActivity(myIntent);
             }
         });
 
