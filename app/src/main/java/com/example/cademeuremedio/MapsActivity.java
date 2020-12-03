@@ -156,9 +156,14 @@ public class MapsActivity extends AppCompatActivity {
             //setar endereço no EditText
             editText.setText(place.getAddress());
             //setar nome da localidade
-            textView.setText(String.format("Nome da  localidade : %s", place.getName()));
+            textView.setText(String.format("Nome: %s", place.getName()));
             //set latitude & long
-            textView2.setText(String.valueOf(place.getLatLng()));
+            //textView2.setText(String.valueOf(place.getLatLng()));
+            textView2.setText("Informações disponíveis");
+
+            //Mover o mapa para a localização:
+            moveTo(place.getLatLng());
+
         }else if (resultCode == AutocompleteActivity.RESULT_ERROR){
             //quando der erro
             //inicar status
@@ -169,5 +174,24 @@ public class MapsActivity extends AppCompatActivity {
         }
     }
 
+    protected void moveTo(final LatLng placeToMove){
+
+        final LatLng latLng = placeToMove;
+        // Add a marker in Sydney and move the camera
+        supportMapFragment.getMapAsync(new OnMapReadyCallback() {
+
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                //iniciar latlng
+                //criar opções de marcador
+                MarkerOptions options = new MarkerOptions().position(latLng)
+                        .title("estou aqui");
+                //zoom no mapa
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                //criar marcador no mapa
+                googleMap.addMarker(options);
+            }
+        });
+    }
 
 }
