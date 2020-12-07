@@ -13,6 +13,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,19 +42,21 @@ import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class MapsActivity extends AppCompatActivity {
+public class MapsActivity extends AppCompatActivity implements Serializable {
     private static final String TAG = "const TAG";
     //inicializar variaveis
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
     EditText editText;
     TextView textView,textView2;
+    Button btnInformacoes;
     PlacesClient placesClient;
     private GoogleMap googlemap;
 
@@ -69,7 +72,7 @@ public class MapsActivity extends AppCompatActivity {
         editText = findViewById(R.id.editText);
         textView = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
-
+        btnInformacoes = findViewById(R.id.buttonInformacoes);
 
 
         //iniciar places
@@ -84,7 +87,7 @@ public class MapsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //iniciar campo de lista do places
                 List<Place.Field> fieldList = Arrays.asList(Place.Field.ADDRESS,
-                        Place.Field.LAT_LNG,Place.Field.NAME);
+                        Place.Field.LAT_LNG,Place.Field.NAME,Place.Field.ID);
                 //criar intent
                 Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY
                         ,fieldList).build(MapsActivity.this);
@@ -177,12 +180,29 @@ public class MapsActivity extends AppCompatActivity {
             //textView2.setText(String.valueOf(place.getLatLng()));
 
             Unidade unidade = new Unidade();
+            System.out.println("Maps Activity retorno place.getId(): "+place.getId());
             unidade = verifFarmacias(place.getId());
 
             if(unidade != null){
                 textView2.setText("Informações disponíveis");
+                btnInformacoes.setVisibility(View.VISIBLE);
+                btnInformacoes.setEnabled(true);
+
+                final Unidade uni = unidade;
+                btnInformacoes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent myIntent = new Intent(getBaseContext(), MapsActivity.class);
+                        myIntent.putExtra("unidade", uni);
+                        startActivity(myIntent);
+                    }
+                });
+
             }else{
                 textView2.setText("Informações não disponíveis");
+                btnInformacoes.setVisibility(View.INVISIBLE);
+                btnInformacoes.setEnabled(false);
             }
 
             //Mover o mapa para a localização:

@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Unidade implements Serializable {
 
-    private int id_unidade;
     private String email;
     private String nome;
     private String senha;
@@ -21,27 +20,18 @@ public class Unidade implements Serializable {
         //hi folks
     }
 
-    public Unidade(int id_unidade, String email, String nome, String senha, String horario_a, String horario_f, String whatsapp, String place_id, String lat, String lng, String obs, String tipo) {
-        this.id_unidade = id_unidade;
+    public Unidade(String place_id, String email, String nome, String senha, String horario_a, String horario_f, String whatsapp, String lat, String lng, String obs, String tipo) {
+        this.place_id = place_id;
         this.email = email;
         this.nome = nome;
         this.senha = senha;
         this.horario_a = horario_a;
         this.horario_f = horario_f;
         this.whatsapp = whatsapp;
-        this.place_id = place_id;
         this.lat = lat;
         this.lng = lng;
         this.obs = obs;
         this.tipo = tipo;
-    }
-
-    public int getId_unidade() {
-        return id_unidade;
-    }
-
-    public void setId_unidade(int id_unidade) {
-        this.id_unidade = id_unidade;
     }
 
     public String getEmail() {

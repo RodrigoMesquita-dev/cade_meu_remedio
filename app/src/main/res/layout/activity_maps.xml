@@ -66,10 +66,14 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/buttonInformacoes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Informações" />
+                android:background="@drawable/background_botao"
+                android:enabled="false"
+                android:paddingHorizontal="10dp"
+                android:text="Informações"
+                android:textColor="#fff" />
         </LinearLayout>
 
     </LinearLayout>
