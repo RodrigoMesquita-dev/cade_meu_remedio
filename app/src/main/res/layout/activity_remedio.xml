@@ -19,12 +19,11 @@
 
             <Button
                 android:id="@+id/button5"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/colorButtons"
-                android:textColor="@color/colorTextBtn"
-                android:text="Voltar" />
+                android:background="@drawable/background_botao"
+                android:text="Voltar"
+                android:textColor="@color/colorTextBtn" />
 
             <View
                 android:layout_width="0dp"
@@ -33,27 +32,25 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/txt_NomeFarmacia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Remédio
-"
             android:layout_margin="20dp"
-            android:textSize="25dp"
-            android:textAlignment="center"
+            android:background="@drawable/background_caixa_texto"
+            android:paddingVertical="5dp"
+            android:text=""
 
-            android:background="#fff"
-            android:paddingVertical="5dp"/>
+            android:textAlignment="center"
+            android:textSize="25dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="182dp"
             android:layout_margin="20dp"
+            android:background="#D0FFFFFF"
+
             android:orientation="vertical"
-
-            android:background="#fff"
             android:padding="10dp">
-
 
 
             <LinearLayout
@@ -63,16 +60,18 @@
 
                 <TextView
                     android:id="@+id/textView_remedio"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Remédio: "
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/textView_rem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text=""
+                    android:textSize="17sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -82,16 +81,18 @@
 
                 <TextView
                     android:id="@+id/textView_estoque"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Estoque: "
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/textView_est"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text=""
+                    android:textSize="17sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -101,16 +102,18 @@
 
                 <TextView
                     android:id="@+id/textView_dosagem"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Dosagem: "
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/textView_dos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text=""
+                    android:textSize="17sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -120,36 +123,20 @@
 
                 <TextView
                     android:id="@+id/textView_descricao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="Descrição: "
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/textView_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text=""
+                    android:textSize="17sp" />
             </LinearLayout>
 
-
-            <Button
-                android:id="@+id/btn_agendar_entrega"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Agendar Entrega"
-                android:background="@color/colorButtons"
-                android:textColor="@color/colorTextBtn"
-                android:layout_marginTop="100dp"/>
-
-            <Button
-                android:id="@+id/btn_mensagem_remedio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorButtons"
-                android:textColor="@color/colorTextBtn"
-                android:text="Enviar Mensagem"
-                android:layout_marginTop="15dp"/>
 
         </LinearLayout>
 

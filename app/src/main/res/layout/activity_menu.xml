@@ -76,15 +76,6 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/buscar_medicamentos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/background_botao"
-                android:text="Buscar Medicamento"
-                android:textColor="@color/colorTextBtn" />
-
-            <Button
                 android:id="@+id/buscar_ubs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,16 +83,6 @@
 
                 android:background="@drawable/background_botao"
                 android:text="Buscar UBS/Farmácia"
-                android:textColor="@color/colorTextBtn" />
-
-            <Button
-                android:id="@+id/ver_mapa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="10dp"
-                android:background="@drawable/background_botao"
-                android:text="Mapa"
                 android:textColor="@color/colorTextBtn" />
 
             <View

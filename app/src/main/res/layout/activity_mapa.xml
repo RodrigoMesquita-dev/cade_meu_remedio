@@ -48,7 +48,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:hint="Digite o nome da farmácia\\UBS" />
 
             <ImageButton
                 android:id="@+id/imageButton"
