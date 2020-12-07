@@ -32,8 +32,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "    horario_f varchar(15),\n" +
             "    whatsapp varchar(15),\n" +
             "    lat varchar(50),\n" +
-            "    lng varchar(50),\n" +
-            "    localização varchar (100),\n" +
+            "    lng varchar(50),\n"+
             "    obs varchar(15),\n" +
             "    tipo varchar(15),\n" +
             "    PRIMARY KEY (place_id)\n" +
@@ -76,11 +75,11 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_CONSULTA);
         boolean r;
 
-        r = salvar_unidade(db,new Unidade("ChIJARyeczoFbJIRW7qWUXOtfNk","1","katyane","123","","","","","","","Farmacia"));
-        r = salvar_unidade(db,new Unidade("ChIJHahP91sFbJIR-5qEJ4UmBvc","1","santo remedio","123","","","","","","","Farmacia"));
-        r = salvar_unidade(db,new Unidade("ChIJvZB9f2wFbJIRZViQEuJdVqA","1","Drogaria Santo Remédio","123","","","","","","","Farmacia"));
-        r = salvar_unidade(db,new Unidade("ChIJVRuqKW8FbJIRAxOJUpxOA7U","1","Drogaria de Jesus","123","","","","","","","Farmacia"));
-        r = salvar_unidade(db,new Unidade("ChIJraEGR3kFbJIRHR0UFNzJVA0","1","Drogarias Flex Farma ","123","","","","","","","Farmacia"));
+        r = salvar_unidade(db,new Unidade("ChIJARyeczoFbJIRW7qWUXOtfNk","1","katyane","123","07:00","17:00","","","","","Farmacia"));
+        r = salvar_unidade(db,new Unidade("ChIJHahP91sFbJIR-5qEJ4UmBvc","1","santo remedio","123","07:00","17:00","","","","","Farmacia"));
+        r = salvar_unidade(db,new Unidade("ChIJvZB9f2wFbJIRZViQEuJdVqA","1","Drogaria Santo Remédio","123","07:00","17:00","","","","","Farmacia"));
+        r = salvar_unidade(db,new Unidade("ChIJVRuqKW8FbJIRAxOJUpxOA7U","1","Drogaria de Jesus","123","07:00","17:00","","","","","Farmacia"));
+        r = salvar_unidade(db,new Unidade("ChIJraEGR3kFbJIRHR0UFNzJVA0","1","Drogarias Flex Farma ","123","07:00","17:00","","","","","Farmacia"));
 
         r = salvar_remedio(db,new Remedio(1,"paracetamol","20gm","Combate dores"));
         r = salvar_remedio(db,new Remedio(2,"nimesulida","20gm","Anti inflamatório"));
@@ -111,16 +110,15 @@ public class DbHelper extends SQLiteOpenHelper {
     public boolean salvar_unidade(SQLiteDatabase db, Unidade unidade) {
         ContentValues cv = new ContentValues();
         cv.put("place_id",unidade.getPlace_id());
-        cv.put("nome",unidade.getNome());
         cv.put("email",unidade.getEmail());
+        cv.put("nome",unidade.getNome());
         cv.put("senha",unidade.getSenha());
-        cv.put("nome",unidade.getHorario_a());
         cv.put("horario_a",unidade.getHorario_a());
         cv.put("horario_f",unidade.getHorario_f());
         cv.put("whatsapp",unidade.getWhatsapp());
-        cv.put("obs",unidade.getObs());
         cv.put("lat",unidade.getLat());
         cv.put("lng",unidade.getLng());
+        cv.put("obs",unidade.getObs());
         cv.put("tipo",unidade.getTipo());
         return db.insert("unidade", null, cv) > 0;
     }

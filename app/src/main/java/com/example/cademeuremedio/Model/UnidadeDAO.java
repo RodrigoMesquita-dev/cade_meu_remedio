@@ -40,26 +40,29 @@ public class UnidadeDAO {
 
     public Unidade Pesquisar(String place_id){
 
-        Unidade u = new Unidade();
+        Unidade u;
         dBase = new DbHelper(contex);
         db = dBase.getReadableDatabase();
+        System.out.println("UnidadeDAO place_id: "+place_id);
 
-        Cursor cursor = db.rawQuery("SELECT nome,horario_a,horario_f,whatsapp,obs,lat,lng,tipo FROM unidade WHERE place_id = ?", new String[] {place_id});
-        cursor.moveToFirst();
 
-        if(cursor.getCount() > 0){
 
-            u = new Unidade();
-            u.setNome(cursor.getString(0));
-            u.setHorario_a(cursor.getString(1));
-            u.setHorario_f(cursor.getString(2));
-            u.setWhatsapp(cursor.getString(3));
-            u.setObs(cursor.getString(4));
-            u.setLat(cursor.getString(5));
-            u.setLng(cursor.getString(6));
-            u.setTipo(cursor.getString(7));
-        } else {
-            u = null;
+        //Cursor cursor = db.query("unidade",new String[] {"nome","horario_a","horario_f","whatsapp","lat","lng"},"place_id = ?",new String[] {place_id},null,null,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM unidade WHERE place_id = ?",new String[] {place_id});
+        u = null;
+
+        while(cursor.moveToNext()){
+                u = new Unidade();
+                u.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+                System.out.println("Cursor Index Nome "+cursor.getString(cursor.getColumnIndex("nome")));
+                System.out.println("Cursor Index 0 "+cursor.getString(2));
+                //System.out.println("UnidadeDAO u.getNome(): "+cursor.getString(cursor.getColumnIndex("cursor")));
+                u.setHorario_a(cursor.getString(cursor.getColumnIndex("horario_a")));
+                u.setHorario_f(cursor.getString(cursor.getColumnIndex("horario_f")));
+                u.setWhatsapp(cursor.getString(cursor.getColumnIndex("whatsapp")));
+                u.setLat(cursor.getString(cursor.getColumnIndex("lat")));
+                u.setLng(cursor.getString(cursor.getColumnIndex("lng")));
+
         }
 
         cursor.close();

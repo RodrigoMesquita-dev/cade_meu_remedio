@@ -14,10 +14,10 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        Button buscar_medicamentos = (Button) findViewById(R.id.buscar_medicamentos);
+        //Button buscar_medicamentos = (Button) findViewById(R.id.buscar_medicamentos);
         Button buscar_ubs = (Button) findViewById(R.id.buscar_ubs);
-        Button ver_mapa = (Button) findViewById(R.id.ver_mapa);
-
+        //Button ver_mapa = (Button) findViewById(R.id.ver_mapa);
+/*
         buscar_medicamentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,5 +41,6 @@ public class Menu extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+        */
     }
 }
