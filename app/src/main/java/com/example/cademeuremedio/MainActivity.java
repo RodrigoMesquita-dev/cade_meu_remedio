@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent myIntent = new Intent(getBaseContext(), MapsActivity.class);
+        Intent myIntent = new Intent(getBaseContext(), tela_inicial.class);
         startActivity(myIntent);
     }
 }
