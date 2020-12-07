@@ -4,17 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cademeuremedio.Model.Unidade;
+import com.example.cademeuremedio.Model.UnidadeDAO;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -29,6 +34,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.PlaceLikelihood;
+import com.google.android.libraries.places.api.net.FetchPlaceRequest;
+import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
@@ -37,13 +45,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
 public class MapsActivity extends AppCompatActivity {
+    private static final String TAG = "const TAG";
     //inicializar variaveis
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
     EditText editText;
     TextView textView,textView2;
-
+    PlacesClient placesClient;
     private GoogleMap googlemap;
 
 
@@ -59,8 +70,12 @@ public class MapsActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
 
+
+
         //iniciar places
         Places.initialize(getApplicationContext(),"AIzaSyBqtgH-0N2-Nd4n11UnxVN2Ojjsk4w8ytA");
+
+        placesClient = Places.createClient(this);
 
         //Setar EditText nao focavel
         editText.setFocusable(false);
@@ -82,7 +97,7 @@ public class MapsActivity extends AppCompatActivity {
         client = LocationServices.getFusedLocationProviderClient(this);
         //checar permissoes
         if (ActivityCompat.checkSelfPermission(MapsActivity.this,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             //quando garantida
             //invocar metodo
             getCurrentLocation();
@@ -90,13 +105,13 @@ public class MapsActivity extends AppCompatActivity {
             //quando a permissao neagda
             //pedir permissao
             ActivityCompat.requestPermissions(MapsActivity.this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+                    new String[]{ACCESS_FINE_LOCATION}, 44);
         }
     }
 
     private void getCurrentLocation() {
         //iniciar a task location
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -131,6 +146,7 @@ public class MapsActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     @Override
@@ -159,7 +175,15 @@ public class MapsActivity extends AppCompatActivity {
             textView.setText(String.format("Nome: %s", place.getName()));
             //set latitude & long
             //textView2.setText(String.valueOf(place.getLatLng()));
-            textView2.setText("Informações disponíveis");
+
+            Unidade unidade = new Unidade();
+            unidade = verifFarmacias(place.getId());
+
+            if(unidade != null){
+                textView2.setText("Informações disponíveis");
+            }else{
+                textView2.setText("Informações não disponíveis");
+            }
 
             //Mover o mapa para a localização:
             moveTo(place.getLatLng());
@@ -193,5 +217,16 @@ public class MapsActivity extends AppCompatActivity {
             }
         });
     }
+
+    protected Unidade verifFarmacias(String place_id){
+        Unidade u = new Unidade();
+        UnidadeDAO ud = new UnidadeDAO(getApplicationContext());
+
+        u = ud.Pesquisar(place_id);
+
+        return u;
+    }
+
+
 
 }

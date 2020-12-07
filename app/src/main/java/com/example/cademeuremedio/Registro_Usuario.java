@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.cademeuremedio.Model.PessoaDAO;
+
 public class Registro_Usuario extends AppCompatActivity {
 
     @Override
@@ -26,9 +28,11 @@ public class Registro_Usuario extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 /*
+                 */
 
                 EditText txtEmail = (EditText) findViewById(R.id.txtEmail);
                 EditText txtNome = (EditText) findViewById(R.id.txtNome);
+                EditText txtCpf = (EditText) findViewById(R.id.txtNome);
                 EditText txtTelefone = (EditText) findViewById(R.id.txtTelefone);
                 EditText txtCelular = (EditText) findViewById(R.id.txtCelular);
                 EditText txtSenha = (EditText) findViewById(R.id.txtSenha);
@@ -36,6 +40,7 @@ public class Registro_Usuario extends AppCompatActivity {
 
                 String email = txtEmail.getText().toString();
                 String nome = txtNome.getText().toString();
+                String cpf = txtCpf.getText().toString();
                 String telefone = txtTelefone.getText().toString();
                 String celular = txtCelular.getText().toString();
                 String senha = txtSenha.getText().toString();
@@ -47,10 +52,9 @@ public class Registro_Usuario extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Você foi cadastrado com sucesso!", Toast.LENGTH_LONG).show();
                 Intent myIntent = new Intent(getBaseContext(), tela_inicial.class);
                 startActivity(myIntent);
-                 */
 
-                Intent myIntent = new Intent(getBaseContext(), tela_inicial.class);
-                startActivity(myIntent);
+                //Intent myIntent = new Intent(getBaseContext(), tela_inicial.class);
+                //startActivity(myIntent);
             }
         });
 

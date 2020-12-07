@@ -1,7 +1,6 @@
-package com.example.cademeuremedio;
+package com.example.cademeuremedio.Model;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class Pessoa implements Serializable {
 

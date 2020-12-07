@@ -25,6 +25,9 @@ public class DbHelper extends SQLiteOpenHelper {
             "    horario_a varchar(15),\n" +
             "    horario_f varchar(15),\n" +
             "    whatsapp varchar(15),\n" +
+            "    place_id varchar(100),\n" +
+            "    lat varchar(50),\n" +
+            "    lng varchar(50),\n" +
             "    localização varchar (100),\n" +
             "    obs varchar(15),\n" +
             "    tipo varchar(15),\n" +
@@ -61,6 +64,11 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_PESSOA);
+        db.execSQL(CREATE_TABLE_UNIDADE);
+        db.execSQL(CREATE_TABLE_REMEDIO);
+        db.execSQL(CREATE_TABLE_POSSUI);
+        db.execSQL(CREATE_TABLE_CONSULTA);
+
 
     }
 
