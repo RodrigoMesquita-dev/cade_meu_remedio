@@ -40,12 +40,30 @@ public class RemedioDAO {
         db = dBase.getReadableDatabase();
 
         //Ficar atento, talvez dê treta aki dpois
+
         Cursor cursor = db.rawQuery("SELECT id_remedio,nome,dosagem,descricao FROM remedio WHERE nome like ?", new String[]{nome});
+        r = null;
+
+
+        while (cursor.moveToNext()){
+            r = new Remedio();
+            r.setId_remedio(Integer.parseInt(cursor.getString(0)));
+            r.setNome(cursor.getString(1));
+            r.setDosagem(cursor.getString(2));
+            r.setDescricao(cursor.getString(3));
+        }
+        cursor.close();
+        db.close();
+
+        return r;
+    }
+
+    /*
         cursor.moveToFirst();
 
         if (cursor.getCount() > 0) {
 
-            r = new Remedio();
+            r = new Remedio_tela();
             r.setId_remedio(Integer.parseInt(cursor.getString(0)));
             r.setNome(cursor.getString(1));
             r.setDosagem(cursor.getString(2));
@@ -53,11 +71,6 @@ public class RemedioDAO {
         } else {
             r = null;
         }
-
-        cursor.close();
-        db.close();
-
-        return r;
-    }
+        */
 
 }

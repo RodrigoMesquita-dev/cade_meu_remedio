@@ -183,7 +183,7 @@ public class MapsActivity extends AppCompatActivity implements Serializable {
             System.out.println("Maps Activity retorno place.getId(): "+place.getId());
             unidade = verifFarmacias(place.getId());
 
-            System.out.println("Maps Activity unidade.getNome: "+unidade.getNome());
+            //System.out.println("Maps Activity unidade.getNome: "+unidade.getNome());
             if(unidade != null){
                 textView2.setText("Informações disponíveis");
                 btnInformacoes.setVisibility(View.VISIBLE);

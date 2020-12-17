@@ -150,12 +150,14 @@
                     android:textColor="#9A000000"
                     android:textSize="14sp" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@android:drawable/ic_menu_search" />
+                    android:background="@color/colorButtons"
+                    android:src="@drawable/quantum_ic_search_grey600_24"
+                    tools:src="@android:drawable/ic_menu_search" />
 
             </LinearLayout>
 

@@ -32,16 +32,28 @@ public class PossuiDAO {
         return gw.getDatabase().insert(TABLE_POSSUI, null, cv) > 0;
     }
 
-    public Possui Pesquisar_remedio(String id_remedio) {
+    public Possui Pesquisar_remedio_unidade(String id_remedio, String id_unidade) {
 
         Possui p = new Possui();
         dBase = new DbHelper(contex);
         db = dBase.getReadableDatabase();
 
         //Ficar atento, talvez dê treta aki dpois
-        Cursor cursor = db.rawQuery("SELECT id_remedio,id_unidade,estoque FROM remedio WHERE nome like ?", new String[]{id_remedio});
-        cursor.moveToFirst();
+        Cursor cursor = db.rawQuery("SELECT id_remedio,id_unidade,estoque FROM possui WHERE id_unidade = ? and id_remedio = ?", new String[]{id_unidade,id_remedio});
+        //cursor.moveToFirst();
+        p = null;
+        while(cursor.moveToNext()) {
+            p = new Possui();
+            p.setId_remedio(Integer.parseInt(cursor.getString(0)));
+            p.setId_unidade(cursor.getString(1));
+            p.setEstoque(Integer.parseInt(cursor.getString(2)));
+        }
+        cursor.close();
+        db.close();
 
+        return p;
+
+        /*
         if (cursor.getCount() > 0) {
 
             p = new Possui();
@@ -51,11 +63,7 @@ public class PossuiDAO {
         } else {
             p = null;
         }
-
-        cursor.close();
-        db.close();
-
-        return p;
+        */
     }
 
     //Listar possui:

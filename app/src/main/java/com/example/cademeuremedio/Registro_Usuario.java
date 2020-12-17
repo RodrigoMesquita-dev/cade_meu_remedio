@@ -32,7 +32,7 @@ public class Registro_Usuario extends AppCompatActivity {
 
                 EditText txtEmail = (EditText) findViewById(R.id.txtEmail);
                 EditText txtNome = (EditText) findViewById(R.id.txtNome);
-                EditText txtCpf = (EditText) findViewById(R.id.txtNome);
+                EditText txtCpf = (EditText) findViewById(R.id.txtCpf);
                 EditText txtTelefone = (EditText) findViewById(R.id.txtTelefone);
                 EditText txtCelular = (EditText) findViewById(R.id.txtCelular);
                 EditText txtSenha = (EditText) findViewById(R.id.txtSenha);
@@ -47,11 +47,16 @@ public class Registro_Usuario extends AppCompatActivity {
                 String senha2 = txtSenha2.getText().toString();
 
                 PessoaDAO dao = new PessoaDAO(getBaseContext());
-                boolean sucesso = dao.salvar(email,senha,nome,telefone,celular);
+                boolean sucesso = dao.salvar(cpf,email,senha,nome,telefone,celular);
+                if(sucesso){
+                    Toast.makeText(getBaseContext(), "Você foi cadastrado com sucesso!", Toast.LENGTH_LONG).show();
+                    Intent myIntent = new Intent(getBaseContext(), tela_inicial.class);
+                    startActivity(myIntent);
+                }
+                else{
+                    Toast.makeText(getBaseContext(), "Algum erro ocorreu no seu cadastro!", Toast.LENGTH_LONG).show();
+                }
 
-                Toast.makeText(getBaseContext(), "Você foi cadastrado com sucesso!", Toast.LENGTH_LONG).show();
-                Intent myIntent = new Intent(getBaseContext(), tela_inicial.class);
-                startActivity(myIntent);
 
                 //Intent myIntent = new Intent(getBaseContext(), tela_inicial.class);
                 //startActivity(myIntent);

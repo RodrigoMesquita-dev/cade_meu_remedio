@@ -53,9 +53,10 @@ public class UnidadeDAO {
 
         while(cursor.moveToNext()){
                 u = new Unidade();
+                u.setPlace_id(cursor.getString(cursor.getColumnIndex("place_id")));
                 u.setNome(cursor.getString(cursor.getColumnIndex("nome")));
-                System.out.println("Cursor Index Nome "+cursor.getString(cursor.getColumnIndex("nome")));
-                System.out.println("Cursor Index 0 "+cursor.getString(2));
+                //System.out.println("Cursor Index Nome "+cursor.getString(cursor.getColumnIndex("nome")));
+                //System.out.println("Cursor Index 0 "+cursor.getString(2));
                 //System.out.println("UnidadeDAO u.getNome(): "+cursor.getString(cursor.getColumnIndex("cursor")));
                 u.setHorario_a(cursor.getString(cursor.getColumnIndex("horario_a")));
                 u.setHorario_f(cursor.getString(cursor.getColumnIndex("horario_f")));

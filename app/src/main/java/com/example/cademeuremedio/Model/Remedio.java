@@ -10,7 +10,9 @@ package com.example.cademeuremedio.Model;
 );
 * */
 
-public class Remedio {
+import java.io.Serializable;
+
+public class Remedio implements Serializable {
     private int id_remedio;
     private String nome;
     private String dosagem;

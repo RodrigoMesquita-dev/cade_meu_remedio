@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Remedio"
+    tools:context=".Remedio_tela"
     android:background="@mipmap/veia_foreground">
 
     <LinearLayout
@@ -23,7 +23,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_botao"
                 android:text="Voltar"
-                android:textColor="@color/colorTextBtn" />
+                android:textColor="@color/colorTextBtn"
+                android:visibility="invisible" />
 
             <View
                 android:layout_width="0dp"

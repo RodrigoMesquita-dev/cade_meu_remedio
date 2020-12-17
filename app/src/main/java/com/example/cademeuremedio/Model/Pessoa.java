@@ -5,16 +5,16 @@ import java.io.Serializable;
 public class Pessoa implements Serializable {
 
     //private int id;
-    //private String cpf;
+    private String cpf;
     private String email;
     private String senha;
     private String nome;
     private String telefone;
     private String celular;
 
-    public Pessoa( String email, String senha, String nome, String telefone, String celular) {
+    public Pessoa( String cpf,String email, String senha, String nome, String telefone, String celular) {
         //this.id = id;
-        //this.cpf = cpf;
+        this.cpf = cpf;
         this.email = email;
         this.senha = senha;
         this.nome = nome;
@@ -43,6 +43,7 @@ public class Pessoa implements Serializable {
         this.id = id;
     }
 
+*/
     public String getCpf() {
         return cpf;
     }
@@ -50,7 +51,6 @@ public class Pessoa implements Serializable {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-*/
     public String getEmail() {
         return email;
     }

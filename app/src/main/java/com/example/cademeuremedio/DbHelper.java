@@ -15,10 +15,10 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Crud.db";
     private static final int DATABASE_VERSION = 1;
     private final String CREATE_TABLE_PESSOA = "CREATE TABLE pessoa (\n" +
-            "    cpf varchar(15) not null,\n" +
             "    email varchar(50) not null,\n" +
             "    senha varchar(70) not null,\n" +
             "    nome varchar(130) not null,\n" +
+            "    cpf varchar(15),\n" +
             "    celular varchar(15),\n" +
             "    telefone varchar(15),\n" +
             "    PRIMARY KEY (email)\n" +

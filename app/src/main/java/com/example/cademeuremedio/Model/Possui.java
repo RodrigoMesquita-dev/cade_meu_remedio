@@ -1,6 +1,8 @@
 package com.example.cademeuremedio.Model;
 
-public class Possui {
+import java.io.Serializable;
+
+public class Possui implements Serializable {
     private String id_unidade;
     private int id_remedio;
     private int estoque;

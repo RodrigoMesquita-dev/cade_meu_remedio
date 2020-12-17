@@ -20,8 +20,9 @@ public class PessoaDAO {
         contex = ctx;
     }
 
-    public boolean salvar( String email, String senha, String nome, String telefone,String celular) {
+    public boolean salvar(String cpf, String email, String senha, String nome, String telefone,String celular) {
         ContentValues cv = new ContentValues();
+        cv.put("cpf",cpf);
         cv.put("email",email);
         cv.put("senha",senha);
         cv.put("nome",nome);
@@ -37,9 +38,9 @@ public class PessoaDAO {
         db = dBase.getReadableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT email,senha,nome,telefone,celular FROM pessoa WHERE email = ?", new String[] {email});
-        cursor.moveToFirst();
-
-        if(cursor.getCount() > 0){
+        //cursor.moveToFirst();
+        p=null;
+        while(cursor.moveToNext()){
 
             p = new Pessoa();
             p.setEmail(cursor.getString(0));
@@ -47,8 +48,6 @@ public class PessoaDAO {
             p.setNome(cursor.getString(2));
             p.setTelefone(cursor.getString(3));
             p.setCelular(cursor.getString(4));
-        } else {
-            p = null;
         }
 
         cursor.close();
